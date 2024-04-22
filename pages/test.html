@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Upload File</title>
+<style>
+/* Приховуємо текстовий контент елементу вводу файлу */
+.custom-file-input {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+/* Стилізуємо кнопку завантаження файлу */
+.custom-file-input + label {
+  font-size: 1.25em;
+  font-weight: 700;
+  color: white;
+  background-color: #007bff;
+  display: inline-block;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 5px;
+}
+</style>
+</head>
+<body>
+
+<!-- Створюємо елемент вводу файлу та мітку -->
+<input type="file" id="fileInput" class="custom-file-input">
+<label for="fileInput">Завантажити файл</label>
+
+<button id="realB"></button>
+
+</body>
+</html>
+
+<script>
+     var fileInput = document.getElementById("fileInput")
+     var realB = document.getElementById('realB')
+     realB.onclick = function() {
+          console.log("Kekek")
+          fileInput.click()
+     }
+</script>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="styles.css">
+     <title>ДФКР.СТУДРАДА.НОВИНИ</title>
+</head>
+<body>
+
+     <header> 
+          <span class="logo_text" id="logo_text"><span class="logo_dfkr_text">ДФКР</span><span class="logo_sr_text">.СТУДРАДА</span></span> 
+          <span class="header_buttons"><button id="header_button_news">НОВИНИ</button><button id="header_button_docs">ДОКУМЕНТИ</button><button id="header_button_contact">ЗВ'ЯЗАТИСЬ</button><button id="header_button_login">УВІЙТИ</button></span>
+     </header>
+
+
+
+     <footer></footer>
+
+</body>
+</html>
+
+<script>
+
+     var headerLogoText = document.getElementById("logo_text")
+
+     var headerButtonNews = document.getElementById("header_button_news")
+     var headerButtonDocs = document.getElementById("header_button_docs")
+     var headerButtonContact = document.getElementById("header_button_contact")
+     var headerButtonLogin = document.getElementById("header_button_login")
+
+     headerLogoText.onclick = function() {
+          window.location.href = "index.html"
+     }
+
+     headerButtonDocs.onclick = function() {
+          window.location.href = "docs.html"
+     }
+
+     headerButtonContact.onclick = function() {
+          window.location.href = "contact.html"
+     }
+
+     headerButtonLogin.onclick = function() {
+          window.location.href = "login.html"
+     }
+
+</script>
