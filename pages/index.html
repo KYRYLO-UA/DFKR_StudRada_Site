@@ -74,7 +74,6 @@
           return [dd, mm, yyyy]
      }
 
-
      function generateCalendar(insertIn, monthName, daysAmount, daysZahl) {
           let todayDate = getNormalDate()
           var weekDaysList = [["Пн", false], ["Вт", false], ["Ср", false], ["Чт", false], ["Пт", false], ["Сб", true], ["Нд", true]]
@@ -139,11 +138,23 @@
      var thIsDaysButtons = document.getElementsByClassName("calendar_day")
      Array.from(thIsDaysButtons).forEach(function(button) {
           button.addEventListener('click', function() {
+               Array.from(thIsDaysButtons).forEach(function(button) {
+                    if (button.classList.contains("isSelectedDay")) { button.classList.remove("isSelectedDay") }
+               });
+     
+               if (button.classList.contains("isSelectedDay")) {
+                    button.classList.remove("isSelectedDay")
+               } else {
+                    button.classList.add("isSelectedDay")
+               }
+
                var notification = button.querySelector(".notification");
-               notification.classList.add('notification_removed');
-               setTimeout(function() { 
-                    notification.remove()
-                }, 100)
+               if (notification) {
+                    notification.classList.add('notification_removed');
+                    setTimeout(function() { 
+                         notification.remove()
+                    }, 100)
+               }
           });
      });
 

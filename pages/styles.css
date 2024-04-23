@@ -210,7 +210,7 @@ body > .main_content > section {
 }
 
 .calendar > table > tbody > tr > th[isToday] {
-     background-color: #bdcaf7;
+     border: 2px solid #c3d4f6;
 }
 
 .calendar > table > tbody > tr > th[isDay]:hover {
@@ -265,6 +265,14 @@ body > .main_content > section {
 .calendar > table > tbody > tr > th[isDay] .notification_removed {
      width: 0;
      height: 0;
+}
+
+.calendar > table > tbody > tr > th.isSelectedDay {
+     background-color: #e7eefc;
+}
+
+.calendar > table > tbody > tr > th.isSelectedDay:hover {
+     background-color: #e1ebff;
 }
 
 /* =============================== */
