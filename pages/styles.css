@@ -1,5 +1,4 @@
 body {
-     /* fill: url("#mx-gradient-f4f6fa-1-e5e9f8-1-e-0"); */
      background: linear-gradient(to right, #f4f6fa, #e5e9f8);
 
      font-family: 'Raleway', sans-serif;
@@ -14,6 +13,7 @@ body {
      justify-content: space-between;
 }
 
+/* HEADER */
 header {
      display: flex;
      justify-content: space-between;
@@ -64,6 +64,7 @@ header {
      background-color: rgb(255, 255, 255);
 }
 
+/* FORMS */
 form {
      display: flex;
      justify-content: center;
@@ -75,13 +76,14 @@ form * {
      user-select: none;
      font-size: 14px;
      outline: none;
-     /* margin-bottom: 20px; */
 }
 
 form > h1 {
      color: rgb(47, 68, 111);
      font-size: 24px;
      font-weight: 800;
+     width: 100%;
+     text-align: center;    
 }
 
 form > div, form > button, form > span {
@@ -110,7 +112,12 @@ form > div > input {
      margin: 10px;
      background: 0;
      margin-top: 13px;
-     /* font-weight: bold; */
+}
+
+@media (max-width: 768px) {
+     form > div > input {
+          width: 200px;
+     }
 }
 
 form > div > input::placeholder {
@@ -147,3 +154,117 @@ form > span {
 #form_button_support {
      cursor: pointer;
 }
+
+/* MAIN CONTENT */
+body > .main_content {
+     width: 90%;
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     flex-direction: column;
+}
+
+body > .main_content > section {
+     width: 100%;
+     background-color: #ffffff;
+}
+
+/* CALENDARS */
+.calendar {
+     padding: 40px;
+     padding-top: 30px;
+}
+
+.calendar > .month {
+     padding: 10px;
+     text-align: center;
+     font-weight: 1000;
+     font-size: 24px;
+     padding: 0;
+}
+
+.calendar > table {
+     border-spacing: 10px;
+}
+
+.calendar > table > thead > tr > th, .calendar > table > tbody > tr > th {
+     width: 50px;
+     height: 50px;
+     user-select: none;
+}
+
+.calendar > table > thead > tr > th {
+     font-weight: 800;
+}
+
+.calendar > table > thead > tr > th[isWeekend] {
+     color: rgb(236, 73, 73);
+}
+
+.calendar > table > tbody > tr > th[isDay] {
+     cursor: pointer;
+     background-color: rgb(250, 250, 250);
+     border-radius: 8px;
+     font-weight: 500;
+     transition: background-color .3s cubic-bezier(0.215, 0.610, 0.355, 1), font-size .2s cubic-bezier(0.215, 0.610, 0.355, 1), font-weight .2s cubic-bezier(0.215, 0.610, 0.355, 1);
+}
+
+.calendar > table > tbody > tr > th[isToday] {
+     background-color: #bdcaf7;
+}
+
+.calendar > table > tbody > tr > th[isDay]:hover {
+     background-color: rgb(240, 240, 240);
+     font-size: 20px;
+     font-weight: 600;
+}
+
+.calendar > table > tbody > tr > th[isDay] > span {
+     display: block;
+}
+
+.calendar > table > tbody > tr > th[isDay] > .eventsAmount {
+     font-size: 9px;
+     color: rgb(187, 187, 187);
+}
+
+.calendar > table > tbody > tr > th[isDay] {
+     position: relative;
+     cursor: pointer;
+     background-color: rgb(250, 250, 250);
+     border-radius: 8px;
+     font-weight: 500;
+     transition: background-color .5s cubic-bezier(0.215, 0.610, 0.355, 1), font-size .1s cubic-bezier(0.215, 0.610, 0.355, 1), font-weight .1s cubic-bezier(0.215, 0.610, 0.355, 1);
+}
+
+.calendar > table > tbody > tr > th[isZahlDay] {
+     opacity: 0%;
+}
+
+.calendar > table > tbody > tr > th[isDay] .notification {
+     position: absolute;
+     font-size: 10px;
+     top: -5px;
+     right: -5px;
+     width: 18px;
+     height: 18px;
+     color: white;
+     background-color: rgb(252, 114, 114);
+     border-radius: 50%;
+     display: flex; 
+     justify-content: center; 
+     align-items: center;
+     font-weight: 600;
+     padding-top: 2px;
+     padding-left: 1px;
+     padding-right: 1px;
+
+     transition: background-color .5s cubic-bezier(0.215, 0.610, 0.355, 1), font-size .1s cubic-bezier(0.215, 0.610, 0.355, 1), width .1s cubic-bezier(0.215, 0.610, 0.355, 1), height .1s cubic-bezier(0.215, 0.610, 0.355, 1);
+}
+
+.calendar > table > tbody > tr > th[isDay] .notification_removed {
+     width: 0;
+     height: 0;
+}
+
+/* =============================== */

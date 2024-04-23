@@ -1,0 +1,58 @@
+.calendars {
+     display: flex;
+     justify-content: center;
+}
+
+.calendar {
+     width: 500px;
+     user-select: none;
+     padding-bottom: 40px;
+}
+
+.calendar > .month { 
+     background-color: #f0f0f0;
+     padding: 10px;
+     text-align: center;
+}
+
+.calendar > .days {
+     display: flex;
+     justify-content: space-between;
+     padding: 10px;
+}
+
+.calendar > .days > div {
+     display: inline-block;
+     width: calc(100% / 8);
+     margin-right: 10px;
+     height: 40px;
+     text-align: center;
+     line-height: 30px;
+}
+
+.calendar > .days > div[isWeekday] {
+     /* background-color: #2F446F; */
+}
+
+.calendar > .days > div[isDay] {
+     cursor: pointer;
+     display: inline;
+     vertical-align: middle;
+     /* background-color: rgb(250, 250, 250); */
+     background-color: #ffffff;
+     border-radius: 8px;
+     margin-bottom: 10px;
+     /* font-weight: bold; */
+     transition: background-color .5s cubic-bezier(0.215, 0.610, 0.355, 1), font-size .1s cubic-bezier(0.215, 0.610, 0.355, 1);
+}
+
+.calendar > .days > div[isDay]:hover {
+     background-color: rgb(245, 245, 245);
+     font-size: 20px;
+     /* padding-top: 5px;
+     padding-bottom: 5px; */
+}
+
+.calendar > .days > div[value="0"] {
+     opacity: 0%;
+}

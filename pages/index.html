@@ -13,7 +13,23 @@
           <span class="header_buttons"><button id="header_button_news">НОВИНИ</button><button id="header_button_docs">ДОКУМЕНТИ</button><button id="header_button_contact">ЗВ'ЯЗАТИСЬ</button><button id="header_button_login">УВІЙТИ</button></span>
      </header>
 
+     <div class="main_content">
 
+          <section class="about_college">
+
+          </section>
+
+          <section class="calendars">
+
+          </section>
+
+          <section class="last_news_list">
+               <div class="news_card">
+
+               </div>
+          </section>
+
+     </div>
 
      <footer></footer>
 
@@ -48,5 +64,87 @@
      headerButtonLogin.onclick = function() {
           window.location.href = "login.html"
      }
+
+
+     function getNormalDate() {
+          let today = new Date()
+          let dd = String(today.getDate()).padStart(2, '0');
+          let mm = String(today.getMonth() + 1).padStart(2, '0'); // Січень - 0
+          let yyyy = today.getFullYear();
+          return [dd, mm, yyyy]
+     }
+
+
+     function generateCalendar(insertIn, monthName, daysAmount, daysZahl) {
+          let todayDate = getNormalDate()
+          var weekDaysList = [["Пн", false], ["Вт", false], ["Ср", false], ["Чт", false], ["Пт", false], ["Сб", true], ["Нд", true]]
+          var newHtml = `<div class="calendar">`
+
+          // Create month name
+          newHtml += `<div class="month">${String(monthName)}</div>`
+
+          // Create weekdays
+          var theadHtml = `<thead class="weekdays"><tr>`
+          for (var i = 0; i < weekDaysList.length; i++) {
+               var wn = weekDaysList[i]
+               var wk = ""
+               if (wn[1]) { wk = "isWeekend" } 
+               theadHtml += `<th isWeekday ${wk}>${String(wn[0])}</th>`
+          }
+          theadHtml += `</tr></thead>`
+
+          // Create days
+          var tbodyHtml = `<tbody class="days">`
+          var currentDay = 0
+          for (var w = 0; w < Math.ceil((daysAmount + daysZahl) / 7); w++) {
+               tbodyHtml += `<tr>`
+               var moveMaxIndex = 7
+               if (w == 0) {
+                    moveMaxIndex = 7 - daysZahl
+                    for (var i = 0; i < daysZahl; i++) {
+                         tbodyHtml += "<th isZahlDay>ye</th>"
+                    }
+               } 
+               for (var i = 1; i <= moveMaxIndex; i++) {
+                    currentDay += 1
+                    var isToday = ""
+                    if (currentDay == todayDate[0]) { isToday = "isToday" }
+                    if (currentDay <= daysAmount) {
+                         var notification_number = String(Math.floor(Math.random() * 5) + 1)
+                         tbodyHtml += `<th class="calendar_day" isDay ${isToday}><span class="notification">${notification_number}</span><span class="dayNumber">${String(currentDay)}</span><span class="eventsAmount">15 подій</span></th>`
+                    }
+               }
+               tbodyHtml += `</tr>`
+          }
+          tbodyHtml += `</tbody>`
+
+          // Create table
+          var tableHtml = `<table class="list">`
+          tableHtml += theadHtml
+          tableHtml += tbodyHtml
+          tableHtml += `</table>`
+
+          newHtml += tableHtml
+          newHtml += `</div>`
+
+          insertIn.innerHTML += newHtml
+
+          return newHtml
+     }
+
+     var calendars = document.getElementsByClassName("calendars")[0]
+
+     generateCalendar(calendars, "Травень 2024", 31, 2)
+
+     var thIsDaysButtons = document.getElementsByClassName("calendar_day")
+     Array.from(thIsDaysButtons).forEach(function(button) {
+          button.addEventListener('click', function() {
+               var notification = button.querySelector(".notification");
+               notification.classList.add('notification_removed');
+               setTimeout(function() { 
+                    notification.remove()
+                }, 100)
+          });
+     });
 
 </script>
